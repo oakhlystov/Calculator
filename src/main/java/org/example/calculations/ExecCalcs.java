@@ -5,7 +5,7 @@ public class ExecCalcs {
         Actions ac = new Actions();
         ArrayPrettifyer ap = new ArrayPrettifyer();
         String[] numbers = input.split("[+-/*]");
-        String[] actions = new String[input.length()];
+        String[] actions = new String[input.length() - 1];
         char[] actionsChars = input.toCharArray();
         double res = Double.parseDouble(numbers[0]);
 
