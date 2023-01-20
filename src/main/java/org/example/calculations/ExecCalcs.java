@@ -31,7 +31,7 @@ public class ExecCalcs {
         int actionsCounter = 0;
         for (char a : actionsChars) {
             checkIfSpace(a);
-            if (String.valueOf(a).equals("+") ||
+            if (    String.valueOf(a).equals("+") ||
                     String.valueOf(a).equals("-") ||
                     String.valueOf(a).equals("/") ||
                     String.valueOf(a).equals("*")) {
