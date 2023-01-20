@@ -6,27 +6,9 @@ public class ExecCalcs {
         ArrayPrettifyer ap = new ArrayPrettifyer();
         String[] numbers = input.split("[+-/*]");
         String[] actions = new String[input.length() - 1];
-        char[] actionsChars = input.toCharArray();
         double res = Double.parseDouble(numbers[0]);
 
-        int m = 0;
-        int actionsCounter = 0;
-        for (char a : actionsChars) {
-            if (String.valueOf(a).equals(" ")) {
-                throw new IllegalArgumentException("No spaces are allowed.");
-            }
-            if (String.valueOf(a).equals("+") ||
-                String.valueOf(a).equals("-") ||
-                String.valueOf(a).equals("/") ||
-                String.valueOf(a).equals("*")) {
-                actions[m] = String.valueOf(a);
-                if (actions[m] != null) {
-                    actionsCounter++;
-                }
-                m++;
-            }
-        }
-        String[] actionsTemp = ap.deleteNullsFromArray(actions, actionsCounter);
+        String[] actionsTemp = ap.deleteNullsFromArray(actions, actionsCounter(input, actions));
 
         for (int i = 0; i < actionsTemp.length; i++) {
             if (numbers[i + 1] == null || actionsTemp[i] == null) {
@@ -41,5 +23,31 @@ public class ExecCalcs {
             };
         }
         return res;
+    }
+
+    public int actionsCounter(String input, String[] actions) {
+        char[] actionsChars = input.toCharArray();
+        int m = 0;
+        int actionsCounter = 0;
+        for (char a : actionsChars) {
+            checkIfSpace(a);
+            if (String.valueOf(a).equals("+") ||
+                    String.valueOf(a).equals("-") ||
+                    String.valueOf(a).equals("/") ||
+                    String.valueOf(a).equals("*")) {
+                actions[m] = String.valueOf(a);
+                if (actions[m] != null) {
+                    actionsCounter++;
+                }
+                m++;
+            }
+        }
+        return actionsCounter;
+    }
+
+    void checkIfSpace(char a) {
+        if (String.valueOf(a).equals(" ")) {
+            throw new IllegalArgumentException("No spaces are allowed.");
+        }
     }
 }
