@@ -1,6 +1,10 @@
 package org.example.calculations;
 
 public class ExecCalcs {
+    private final String symbolPlus = "+";
+    private final String symbolMinus = "-";
+    private final String symbolDivide = "/";
+    private final String symbolMultiply = "*";
     public double calculate(String input) {
         Actions ac = new Actions();
         ArrayPrettifyer ap = new ArrayPrettifyer();
@@ -15,10 +19,10 @@ public class ExecCalcs {
                 break;
             }
             res = switch (actionsTemp[i]) {
-                case "+" -> ac.plus(res, Double.parseDouble(numbers[i + 1]));
-                case "-" -> ac.minus(res, Double.parseDouble(numbers[i + 1]));
-                case "*" -> ac.multiply(res, Double.parseDouble(numbers[i + 1]));
-                case "/" -> ac.division(res, Double.parseDouble(numbers[i + 1]));
+                case symbolPlus -> ac.plus(res, Double.parseDouble(numbers[i + 1]));
+                case symbolMinus -> ac.minus(res, Double.parseDouble(numbers[i + 1]));
+                case symbolMultiply -> ac.multiply(res, Double.parseDouble(numbers[i + 1]));
+                case symbolDivide -> ac.division(res, Double.parseDouble(numbers[i + 1]));
                 default -> res;
             };
         }
@@ -45,7 +49,7 @@ public class ExecCalcs {
         return actionsCounter;
     }
 
-    void checkIfSpace(char a) {
+    private void checkIfSpace(char a) {
         if (String.valueOf(a).equals(" ")) {
             throw new IllegalArgumentException("No spaces are allowed.");
         }

@@ -5,11 +5,9 @@ import org.example.input.Input;
 import org.example.output.Output;
 
 public class Calculator {
-    public void start(){
-        Input in = new Input();
+    public static void start(){
         ExecCalcs ec = new ExecCalcs();
-        Output ou = new Output();
 
-        ou.printResult(ec.calculate(in.getInput()));
+        Output.printResult(ec.calculate(Input.getInput()));
     }
 }
