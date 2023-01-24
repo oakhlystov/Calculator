@@ -35,15 +35,14 @@ public class ExecCalcs {
         int actionsCounter = 0;
         for (char a : actionsChars) {
             checkIfSpace(a);
-            if (    String.valueOf(a).equals("+") ||
-                    String.valueOf(a).equals("-") ||
-                    String.valueOf(a).equals("/") ||
-                    String.valueOf(a).equals("*")) {
-                actions[m] = String.valueOf(a);
-                if (actions[m] != null) {
-                    actionsCounter++;
+            switch (String.valueOf(a)) {
+                case "+", "-", "/", "*" -> {
+                    actions[m] = String.valueOf(a);
+                    if (actions[m] != null) {
+                        actionsCounter++;
+                    }
+                    m++;
                 }
-                m++;
             }
         }
         return actionsCounter;
