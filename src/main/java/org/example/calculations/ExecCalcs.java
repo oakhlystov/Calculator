@@ -31,10 +31,12 @@ public class ExecCalcs {
 
     public int actionsCounter(String input, String[] actions) {
         char[] actionsChars = input.toCharArray();
+        for (char a : actionsChars) {
+            checkIfSpace(a);
+        }
         int m = 0;
         int actionsCounter = 0;
         for (char a : actionsChars) {
-            checkIfSpace(a);
             switch (String.valueOf(a)) {
                 case "+", "-", "/", "*" -> {
                     actions[m] = String.valueOf(a);
